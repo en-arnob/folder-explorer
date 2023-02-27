@@ -16,11 +16,11 @@ const folderSchema = new Schema({
     subFolders: [
         {
             type: Schema.Types.ObjectId,
-            ref: this
+            ref: 'Folder'
           },
     ],
 })
 
 
-const Folder = model("Folder", folderSchema)
+const Folder = model("Folder", folderSchema, "folders")
 module.exports = Folder;

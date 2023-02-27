@@ -13,8 +13,8 @@ exports.addFolderController = async (req, res) => {
                     name: folderName,
                     parentId: parentId
                 })
-                const updatedParentFolder = await Folder.findOneAndUpdate({ _id: parentId }, { $push: { subFolders: newFolder._id } })
                 newFolder.save()
+                const updatedParentFolder = await Folder.findOneAndUpdate({ _id: parentId }, { $push: { subFolders: newFolder._id } })
                 return res.status(200).json({ msg: `New folder ${folderName} created successfully` });
             }
         } else {
@@ -29,4 +29,19 @@ exports.addFolderController = async (req, res) => {
         return res.status(500).json({ errors: error });
     }
 
+}
+
+exports.getFoldersController = async (req, res) => {
+    const id = req.query.id
+    try {
+        let folders = await Folder.find().populate({ 
+            path: 'subFolders',
+            populate: {
+              path: 'subFolders'
+            } 
+         })
+        return res.status(200).json({folders} );
+      } catch (error) {
+        res.json(error);
+      }
 }
