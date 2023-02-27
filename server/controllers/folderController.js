@@ -45,3 +45,21 @@ exports.getFoldersController = async (req, res) => {
         res.json(error);
       }
 }
+
+exports.deleteFolderController = async (req, res) => {
+    const folderId = req.query.folderId
+    const parentFolderId = req.query.parentFolderId
+
+    try {
+        const deletedFolder = await Folder.findByIdAndDelete(folderId);
+        res.status(200).json({
+            status: "success",
+          });
+        
+    } catch (error) {
+        res.status(400).json({
+            status: "fail",
+            message: "failed to find or delete the folder",
+          });
+    }
+}
