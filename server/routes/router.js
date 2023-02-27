@@ -4,7 +4,7 @@ const {addFolderController} = require("../controllers/folderController")
 
 
 
-router.get("/addFolder", addFolderController);
+router.post("/addFolder", addFolderController);
 
 
 module.exports = router;
