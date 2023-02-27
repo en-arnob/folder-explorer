@@ -10,7 +10,8 @@ exports.addFolderController = async (req, res) => {
             const parentFolder = await Folder.findById(parentId)
             if(parentFolder){
                 let newFolder = await new Folder({
-                    name: folderName
+                    name: folderName,
+                    parentId: parentId
                 })
                 const updatedParentFolder = await Folder.findOneAndUpdate({ _id: parentId }, { $push: { subFolders: newFolder._id } })
                 newFolder.save()

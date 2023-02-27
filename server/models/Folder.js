@@ -12,6 +12,7 @@ const folderSchema = new Schema({
     //     type: Schema.Types.ObjectId,
     //     ref: 'folderSchema',
     // },
+    parentId: Schema.Types.ObjectId,
     subFolders: [
         {
             type: Schema.Types.ObjectId,
