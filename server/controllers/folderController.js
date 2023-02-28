@@ -51,9 +51,11 @@ exports.deleteFolderController = async (req, res) => {
     const parentFolderId = req.query.parentFolderId
 
     try {
+        const parentFolder = await Folder.findOneAndUpdate({_id:parentFolderId}, { $pull: { subFolders: folderId } })
         const deletedFolder = await Folder.findByIdAndDelete(folderId);
+        
         res.status(200).json({
-            status: "success",
+            status: "folder delete success",
           });
         
     } catch (error) {
