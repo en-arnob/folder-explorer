@@ -20,7 +20,7 @@ const App = () => {
     };
 
     getAllFolders();
-  }, [setFolderData]);
+  }, [folderData, setFolderData]);
   const handleAddFolder = (parentId, fName) => {
     // console.log(parentId, fName);
     axios
