@@ -58,3 +58,24 @@ code {
   display: flex;
   flex-direction: column;
 }
+.title {
+  
+  margin-left: 10px;
+  
+}
+.sub_div {
+  position: absolute;
+  bottom: 0px;
+  padding-left: 10px;
+}
+.confirmBox {
+  text-align:center;
+                position: relative;
+                padding-top: 10px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                left: 10px;
+                height: 50px;
+                width: 400px;
+                background-color: rgb(207, 190, 29);
+}

@@ -5,6 +5,7 @@ const Folder = ({ explorer, handleAddFolder, handleDeleteFolder }) => {
   //   console.log(explorer);
   const [expand, setExpand] = useState(false);
   const [showInput, setShowInput] = useState(false);
+  const [confirmationDisplay, setConfirmationDisplay] = useState(false);
 
   const handleNewFolder = (event) => {
     event.stopPropagation();
@@ -32,7 +33,7 @@ const Folder = ({ explorer, handleAddFolder, handleDeleteFolder }) => {
         </span>
         <div>
           <button onClick={(e) => handleNewFolder(e)}>Add Folder</button>
-          <button onClick={(e) => onDeleteFolder(e)}>Delete</button>
+          <button onClick={(e) => setConfirmationDisplay(true)}>Delete</button>
         </div>
       </div>
       <div style={{ display: expand ? "block" : "none", paddingLeft: 25 }}>
@@ -48,6 +49,14 @@ const Folder = ({ explorer, handleAddFolder, handleDeleteFolder }) => {
               onBlur={() => setShowInput(false)}
               autoFocus
             />
+          </div>
+        )}
+        {confirmationDisplay && (
+          <div className='confirmBox'>
+            Are you sure want to delete the folder?
+            <br />
+            <button onClick={(e) => onDeleteFolder(e)}>Yes</button>
+            <button onClick={() => setConfirmationDisplay(false)}>No</button>
           </div>
         )}
         {explorer.subFolders &&

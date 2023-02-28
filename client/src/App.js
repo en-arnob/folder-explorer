@@ -51,12 +51,22 @@ const App = () => {
 
   return (
     <div>
-      <h2>Ostad Folder Explorer</h2>
+      <h2 className='title'>Ostad Folder Explorer</h2>
       <Folder
         explorer={folderData}
         handleAddFolder={handleAddFolder}
         handleDeleteFolder={handleDeleteFolder}
       />
+
+      <div class='sub_div'>
+        <p>
+          {" "}
+          © Khalid Ibn Alam Utsob{" "}
+          <span>
+            <a href='mailto:en.arnob@gmail.com'>en.arnob@gmail.com</a>
+          </span>
+        </p>
+      </div>
     </div>
   );
 };
