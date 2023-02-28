@@ -48,9 +48,13 @@ code {
 }
 
 .folder > div > button {
-  font-size: 15px;
-  background-color: rgb(193, 206, 207);
+  font-size: 14px;
+  
+  background-color: rgb(141, 181, 184);
   cursor: pointer;
+  border: none;
+  padding: 8px;
+  margin-right: 2px;
   
 }
 .folder > div > button:hover {

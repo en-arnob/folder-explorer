@@ -37,7 +37,25 @@ exports.getFoldersController = async (req, res) => {
         let folders = await Folder.find().populate({ 
             path: 'subFolders',
             populate: {
-              path: 'subFolders'
+              path: 'subFolders',
+              populate: {
+                path: 'subFolders',
+                populate: {
+                    path: 'subFolders',
+                    populate: {
+                        path: 'subFolders',
+                        populate: {
+                            path: 'subFolders',
+                            populate: {
+                                path: 'subFolders',
+                                
+                              } 
+                          } 
+                      } 
+                  } 
+                
+              },
+              
             } 
          })
         return res.status(200).json({folders} );
