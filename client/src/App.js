@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Folder from "./components/Folder";
 
 const App = () => {
   const [folderData, setFolderData] = useState({});
@@ -19,11 +20,15 @@ const App = () => {
     };
 
     getAllFolders();
-  });
+  }, [setFolderData]);
+  const handleAddFolder = (parentId, fName) => {
+    console.log(parentId, fName);
+  };
 
   return (
     <div>
       <h2>Ostad Folder Explorer</h2>
+      <Folder explorer={folderData} handleAddFolder={handleAddFolder} />
     </div>
   );
 };
