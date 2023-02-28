@@ -50,6 +50,12 @@ code {
 .folder > div > button {
   font-size: 15px;
   background-color: rgb(193, 206, 207);
+  cursor: pointer;
+  
+}
+.folder > div > button:hover {
+  background-color: #4c5eaf;
+  color: white;
 }
 
 .file {
@@ -75,7 +81,17 @@ code {
                 margin-top: 10px;
                 margin-bottom: 10px;
                 left: 10px;
-                height: 50px;
+                height: 60px;
                 width: 400px;
                 background-color: rgb(207, 190, 29);
+}
+.confirmBox > button {
+  margin-top: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 5px;
+}
+.confirmBox > button:hover {
+  background-color: #e43a07;
+  color: white;
 }

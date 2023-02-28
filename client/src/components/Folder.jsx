@@ -33,7 +33,11 @@ const Folder = ({ explorer, handleAddFolder, handleDeleteFolder }) => {
         </span>
         <div>
           <button onClick={(e) => handleNewFolder(e)}>Add Folder</button>
-          <button onClick={(e) => setConfirmationDisplay(true)}>Delete</button>
+          {explorer.canDelete && (
+            <button onClick={(e) => setConfirmationDisplay(true)}>
+              Delete
+            </button>
+          )}
         </div>
       </div>
       <div style={{ display: expand ? "block" : "none", paddingLeft: 25 }}>
