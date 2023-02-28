@@ -22,7 +22,17 @@ const App = () => {
     getAllFolders();
   }, [setFolderData]);
   const handleAddFolder = (parentId, fName) => {
-    console.log(parentId, fName);
+    // console.log(parentId, fName);
+    axios
+      .post(
+        `http://localhost:8000/addFolder?folderName=${fName}&pid=${parentId}`
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
