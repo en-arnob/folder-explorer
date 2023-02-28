@@ -21,6 +21,7 @@ const App = () => {
 
     getAllFolders();
   }, [folderData, setFolderData]);
+
   const handleAddFolder = (parentId, fName) => {
     // console.log(parentId, fName);
     axios
@@ -34,11 +35,28 @@ const App = () => {
         console.log(error);
       });
   };
+  const handleDeleteFolder = (folderId, parentId) => {
+    // console.log(folderId, parentId);
+    axios
+      .delete(
+        `http://localhost:8000/deleteFolder?folderId=${folderId}&parentFolderId=${parentId}`
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
       <h2>Ostad Folder Explorer</h2>
-      <Folder explorer={folderData} handleAddFolder={handleAddFolder} />
+      <Folder
+        explorer={folderData}
+        handleAddFolder={handleAddFolder}
+        handleDeleteFolder={handleDeleteFolder}
+      />
     </div>
   );
 };

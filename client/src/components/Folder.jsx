@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FcFolder, FcOpenedFolder } from "react-icons/fc";
 
-const Folder = ({ explorer, handleAddFolder }) => {
+const Folder = ({ explorer, handleAddFolder, handleDeleteFolder }) => {
   //   console.log(explorer);
   const [expand, setExpand] = useState(false);
   const [showInput, setShowInput] = useState(false);
@@ -18,6 +18,10 @@ const Folder = ({ explorer, handleAddFolder }) => {
       setShowInput(false);
     }
   };
+  const onDeleteFolder = (event) => {
+    event.stopPropagation();
+    handleDeleteFolder(explorer._id, explorer.parentId);
+  };
 
   return (
     <div style={{ marginTop: 5, marginLeft: 15 }}>
@@ -28,7 +32,7 @@ const Folder = ({ explorer, handleAddFolder }) => {
         </span>
         <div>
           <button onClick={(e) => handleNewFolder(e)}>Add Folder</button>
-          <button>Delete</button>
+          <button onClick={(e) => onDeleteFolder(e)}>Delete</button>
         </div>
       </div>
       <div style={{ display: expand ? "block" : "none", paddingLeft: 25 }}>
@@ -52,6 +56,7 @@ const Folder = ({ explorer, handleAddFolder }) => {
               <Folder
                 explorer={exp}
                 handleAddFolder={handleAddFolder}
+                handleDeleteFolder={handleDeleteFolder}
                 key={exp._id}
               />
             );
